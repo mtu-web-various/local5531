@@ -5,7 +5,7 @@ Some issues:
 *Since I am not a expert on PHP&Frontend codes are poorly written :(
 So I am looking forward to your improvements on the code and your suggestions on VIEW & CONTROLLER design
 After we decide on the final CONTROLLER & VIEW schema we can upload the code for the server on Amar's git.
-And I also put a excel file on onedrive to track the view-controller jobs 
+And I also put a excel file on onedrive to track the view-controller jobs (Please check the FinalProject Folder)
 
 To run it install WAMP and create a local database with the name "sql_training" and create the local db:
 
