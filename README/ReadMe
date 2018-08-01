@@ -34,3 +34,6 @@ INSERT INTO contract (ctype, umail, tvalue) VALUES
 ('Premium', 'd@gmail.com', '12345'),
 ('Premium', 'e@gmail.com', '12345'),
 ('Premium', 'f@gmail.com', '12345');
+
+For frontend template: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h
+For Bootstrap forms: https://getbootstrap.com/docs/4.1/components/forms/
