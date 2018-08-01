@@ -1,0 +1,36 @@
+This is the git for my local website the reason for this code is
+to CREATE VIEW-CONTROLLER EXAMPLES for our project!
+Some issues: 
+*Controller and view part is mixed right now:(
+*Since I am not a expert on PHP&Frontend codes are poorly written :(
+So I am looking forward to your improvements on the code and your suggestions on VIEW & CONTROLLER design
+After we decide on the final CONTROLLER & VIEW schema we can upload the code for the server site on Amar's git.
+And I also put a excel file on onedrive to track the view-controller jobs 
+
+To run it install WAMP and create a local database with the name "sql_training" and create the local db:
+
+CREATE TABLE users (
+  user_role varchar(30),
+  user_email varchar(40),
+  user_pass varchar(40));
+  
+INSERT INTO users (user_role, user_email, user_pass) VALUES
+('Employee', 'a@gmail.com', '12345'),
+('Sale Associate', 'b@gmail.com', '12345'),
+('Manager', 'c@gmail.com', '12345'),
+('TAM', 'd@gmail.com', '12345'),
+('Client', 'e@gmail.com', '12345'),
+('Admin', 'f@gmail.com', '12345');
+
+CREATE TABLE contract (
+  ctype varchar(30),
+  umail varchar(40),
+  tvalue varchar(40));
+  
+INSERT INTO contract (ctype, umail, tvalue) VALUES
+('Premium', 'a@gmail.com', '12345'),
+('Premium', 'b@gmail.com', '12345'),
+('Premium', 'c@gmail.com', '12345'),
+('Premium', 'd@gmail.com', '12345'),
+('Premium', 'e@gmail.com', '12345'),
+('Premium', 'f@gmail.com', '12345');
