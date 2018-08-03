@@ -1,0 +1,162 @@
+Employee (email, role, last_name, first_name, add_emp_email, passwd, is_active)
+	Primary key: email
+	Foreign key: add_emp_email (NULLable)
+	FD1: email -> role, last_name, first_name, add_emp_email, passwd, is_active
+		LHS is a key
+	FD2: last_name, first_name, add_emp_email -> email, role, passwd, is_active
+		LHS is a key
+	FD3: add_emp_email -> last_name, first_name; 
+		RHS is part of a key
+	3NF
+	
+Department (name)
+	Primary key: name
+	FD1: name -> name: trivial FD
+	BCNF
+	
+EmpAssociatedDept (emp_email, dept_name)
+	Primary key: emp_email
+	Foreign key: emp_email
+	FD: emp_email -> dept_name
+		LHS is a key
+	BCNF
+		
+Contract (id, acv, initial_amount, start_date, contract_type, service_type, satisfaction_score) 
+	Primary key: id
+	FD1: id -> acv, initial_amount, start_date, contract_type, service_type, satisfaction_score
+		LHS is a key
+	FD2: acv, initial_amount, start_date -> id, contract_type, service_type, satisfaction_score
+		LHS is a key
+	BCNF
+	
+Company (id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd)
+	Primary key: id
+	Foreign key: add_company_id (NULLable)
+	FD1: id -> id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd
+		LHS is a key
+	FD2: name, add_company_id -> id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd
+		LHS is a key
+	FD3: contact_email -> id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd
+		LHS is a key
+	FD4: contact_number -> id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd
+		LHS is a key
+	FD5: add_company_id, contact_first_name, contact_last_name -> id, name, add_company_id, contact_first_name, contact_last_name, contact_email, contact_number, passwd
+		LHS is a key
+	3NF
+	
+WorksOn (emp_email, contract_id, task_type, date, hours_worked, hours_budgeted, is_active)
+	Primary key: emp_email, contract_id
+	Foreign key: emp_email, contract_id, task_type
+	FD1: emp_email, contract_id -> emp_email, contract_id, task_type, date, hours_worked, hours_budgeted, is_active
+		LHS is a key
+	BCNF
+	
+SignedBy (contract_id, company_id, is_active)
+	Primary key: contract_id, company_id
+	Foreign key: contract_id, company_id
+	FD1: contract_id, company_id -> contract_id, company_id, is_active
+		LHS is a key
+	BCNF
+
+ProjectDelivered (contract_id, delivery_type, due_date, delivered_date)
+	Primary key: contract_id, delivery_type
+	Foreign key: contract_id, delivery_type
+	FD1: contract_id, delivery_type -> contract_id, delivery_type, due_date, delivered_date
+		LHS is a key
+	BCNF
+	
+ContractDeliverables (type, days_to_deliver)
+	Primary key: type
+	FD1: type -> days_to_deliver
+		LHS is a key
+	BCNF
+
+Tasks (type)
+	Primary key: type
+	FD1: type->type
+		trivial FD
+	BCNF
+	
+Province (name)
+	Primary key: name
+	FD1: name->name
+		trivial FD
+	BCNF
+	
+City (prov_name, city_name)
+	Primary key: prov_name, city_name
+	Foreign key: prov_name
+	FD1: prov_name, city_name -> prov_name, city_name 
+		trivial FD
+	BCNF
+	
+CityLocatedIn (prov_name, city_prov_name, city_name)
+	Primary key: prov_name, city_prov_name, city_name
+	Foreign key: prov_name, city_prov_name, city_name
+	FD1: prov_name, city_prov_name, city_name -> prov_name, city_prov_name, city_name
+		trivial	FD
+	BCNF
+		
+EmployeeAddress (emp_email, street_address, city_prov_name, city_name, prov_name, postal_code)
+	Primary key: emp_email
+	Foreign key: emp_email
+	FD1: emp_email -> emp_email, street_address, city_prov_name, city_name, prov_name, postal_code
+		LHS is a key
+	FD2: street_address, city_prov_name, city_name, prov_name -> emp_email, street_address, city_prov_name, city_name, prov_name, postal_code
+		LHS is a key
+	3NF
+	
+CompanyAddress (company_id, street_address, city_prov_name, city_name, prov_name, postal_code)
+	Primary key: company_id
+	Foreign key: company_id
+	FD1: company_id -> company_id, street_address, city_prov_name, city_name, prov_name, postal_code
+		LHS is a key
+	FD2: street_address, city_prov_name, city_name, prov_name -> company_id, street_address, city_prov_name, city_name, prov_name, postal_code
+		LHS is a key
+	3NF
+		
+EmployeeManages (mgr_emp_email, emp_email)
+	Primary key: mgr_emp_email
+	Foreign key: mgr_emp_email, emp_email
+	FD1: mgr_emp_email -> mgr_emp_email, emp_email
+		LHS is a key
+	BCNF
+
+LineOfBusiness (type)
+	Primary key: type
+	FD1: type->type
+	BCNF
+	
+LOBManagedBy (tam_emp_email, lob_type)
+	Primary key: tam_emp_email
+	Foreign key: tam_emp_email, lob_type
+	FD1: tam_emp_email-> tam_emp_email, lob_type
+		LHS is a key
+	BCNF
+
+ContractLOB (contract_id, lob_type)
+	Primary key: contract_id
+	Foreign key: contract_id
+	FD1: contract_id -> contract_id, lob_type
+		LHS is a key
+	BCNF
+	
+InsurancePlan (type, amount_reimbursed)
+	Primary key: type
+	FD1: type -> type, amount_reimbursed
+		LHS is a key
+	BCNF
+	
+EmpInsured (emp_email, ins_type)
+	Primary key: emp_email
+	Foreign key: emp_email, ins_type
+	FD1: emp_email -> emp_email, ins_type
+		LHS is a key
+	BCNF
+	
+UserAccess (id, role, passwd)
+	Primary key: id
+	Foreign key: id 
+	FD1: id -> id, role, passwd
+		LHS is a key
+	BCNF
